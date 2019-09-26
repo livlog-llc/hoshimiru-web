@@ -9,11 +9,10 @@
 package jp.livlog.hoshimiru.helper.hoshimiru;
 
 import java.sql.Time;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import jp.livlog.hoshimiru.share.HoshimiruSymbol;
-import lombok.extern.slf4j.Slf4j;
+import jp.livlog.hoshimiru.share.OtherUtil;
 
 /**
  * 定数クラス.
@@ -21,7 +20,6 @@ import lombok.extern.slf4j.Slf4j;
  * @author H.Aoshima
  * @version 1.0
  */
-@Slf4j
 public final class StarrySkyMessage {
 
     /**
@@ -89,11 +87,11 @@ public final class StarrySkyMessage {
      */
     public static String getAstronomyMess(final String sunriseHm, final String sunsetHm, final Date date) {
 
-        final int sunrise = convertToMinute(sunriseHm, HoshimiruSymbol.FORMAT_TIME_HH_MM);
-        final int sunset = convertToMinute(sunsetHm, HoshimiruSymbol.FORMAT_TIME_HH_MM);
+        final int sunrise = OtherUtil.convertToMinute(sunriseHm, HoshimiruSymbol.FORMAT_TIME_HH_MM);
+        final int sunset = OtherUtil.convertToMinute(sunsetHm, HoshimiruSymbol.FORMAT_TIME_HH_MM);
 
-        final String stTime = convertToString(new Time(date.getTime()), HoshimiruSymbol.FORMAT_TIME_HH_MM);
-        final int time = convertToMinute(stTime, HoshimiruSymbol.FORMAT_TIME_HH_MM);
+        final String stTime = OtherUtil.convertToString(new Time(date.getTime()), HoshimiruSymbol.FORMAT_TIME_HH_MM);
+        final int time = OtherUtil.convertToMinute(stTime, HoshimiruSymbol.FORMAT_TIME_HH_MM);
 
         if (sunrise < time && time < sunset) {
             return StarrySkyMessage.M0001;
@@ -141,69 +139,4 @@ public final class StarrySkyMessage {
         }
     }
 
-    /**
-     * String型の時間を分に変換.
-     *
-     * @param time 変換対象となるString
-     * @param pattern 変換パターン
-     * @return 分
-     */
-    public static int convertToMinute(final String time, final String pattern) {
-
-        // 返却値.String型のTime
-        int nRtnMinute = -1;
-
-        if (time == null) {
-            return nRtnMinute;
-        }
-
-        try {
-            SimpleDateFormat format = new SimpleDateFormat(pattern);
-            format.setLenient(false);
-            final Date date = format.parse(time);
-
-            format = new SimpleDateFormat(HoshimiruSymbol.FORMAT_TIME_HHMM);
-            format.setLenient(false);
-            final String timeAfter = format.format(date);
-
-            final int nHour = Integer.parseInt(timeAfter.substring(0, 2));
-            final int nMinute = Integer.parseInt(timeAfter.substring(2));
-
-            nRtnMinute = nHour * HoshimiruSymbol.INT_60 + nMinute;
-
-        } catch (final Exception e) {
-            // エラーログ
-            log.error(e.getMessage(), e);
-        }
-
-        return nRtnMinute;
-    }
-
-    /**
-     * Time型の時間をString型に変換.
-     *
-     * @param time 変換対象となるTime
-     * @param pattern 変換パターン
-     * @return String型のTime
-     */
-    public static String convertToString(final Time time, final String pattern) {
-
-        // 返却値.String型のTime
-        String strTime = null;
-
-        if (time == null) {
-            return null;
-        }
-        try {
-            final SimpleDateFormat format = new SimpleDateFormat(pattern);
-            format.setLenient(false);
-            strTime = format.format(time);
-            strTime = strTime.replace("午前", "AM").replace("午後", "PM");
-        } catch (final Exception e) {
-            // エラーログ
-            log.error(e.getMessage(), e);
-        }
-
-        return strTime;
-    }
 }

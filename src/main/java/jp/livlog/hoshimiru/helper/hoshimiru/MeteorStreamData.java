@@ -1,12 +1,12 @@
 /*
- * タイトル：流星群Data
- * 説明    ：流星群を保持する.
- * 著作権  ：Copyright(c) 2013-2014 LineDesign
- * 会社名  ：株式会社 LineDesign
- * 変更履歴：2011.02.07
+ * タイトル：ほしみるプロジェクト
+ * 説明    ：
+ * 著作権  ：Copyright(c) 2019 LivLog llc.
+ * 会社名  ：リブログ合同会社
+ * 変更履歴：2019.09.20
  *         ：新規登録
  */
-package jp.linedesign.hoshimiru.helper.hoshimiru;
+package jp.livlog.hoshimiru.helper.hoshimiru;
 
 import java.io.Serializable;
 

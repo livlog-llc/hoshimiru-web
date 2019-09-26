@@ -1,12 +1,12 @@
 /*
- * タイトル：ほしぞらカレンダー取得クラス
- * 説明    ：ほしぞらカレンダー取得を提供をする.
- * 著作権  ：Copyright(c) 2013-2014 LineDesign
- * 会社名  ：株式会社 LineDesign
- * 変更履歴：2012.03.03
+ * タイトル：ほしみるプロジェクト
+ * 説明    ：
+ * 著作権  ：Copyright(c) 2019 LivLog llc.
+ * 会社名  ：リブログ合同会社
+ * 変更履歴：2019.09.20
  *         ：新規登録
  */
-package jp.linedesign.hoshimiru.helper.hoshimiru;
+package jp.livlog.hoshimiru.helper.hoshimiru;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -18,10 +18,10 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import jp.linedesign.utility.DateUtil;
-import jp.linedesign.utility.HttpUtil;
-import jp.linedesign.utility.Parameters;
-import jp.linedesign.utility.Symbol;
+import jp.livlog.hoshimiru.share.HoshimiruSymbol;
+import jp.livlog.hoshimiru.share.HttpUtil;
+import jp.livlog.hoshimiru.share.OtherUtil;
+import jp.livlog.hoshimiru.share.Parameters;
 import net.arnx.jsonic.JSON;
 
 /**
@@ -70,7 +70,7 @@ public final class AstroCalendar {
 
         final Parameters parameters = new Parameters();
 
-        parameters.addParameter("date", DateUtil.convertToString(datetime, "yyyy-MM-dd"));
+        parameters.addParameter("date", OtherUtil.convertToString(datetime, "yyyy-MM-dd"));
         final URL url = new URL(HttpUtil.setUrlParameter(SUGGETS_URL1, parameters));
         final HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setReadTimeout(0);
@@ -79,7 +79,7 @@ public final class AstroCalendar {
 
         // 値の取得
         final InputStream is = connection.getInputStream();
-        final Reader r = new InputStreamReader(is, Symbol.UTF_8);
+        final Reader r = new InputStreamReader(is, HoshimiruSymbol.UTF_8);
 
         final AstroCalendarJson dto = JSON.decode(r, AstroCalendarJson.class);
 

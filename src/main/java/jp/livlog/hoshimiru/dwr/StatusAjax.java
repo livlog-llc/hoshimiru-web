@@ -1,25 +1,23 @@
 /*
- * タイトル：星みるプロジェクト.
+ * タイトル：ほしみるプロジェクト
  * 説明    ：
- * 著作権  ：Copyright(c) 2016 LineDesign
- * 会社名  ：株式会社 LineDesign
- * 変更履歴：2016.01.01
+ * 著作権  ：Copyright(c) 2019 LivLog llc.
+ * 会社名  ：リブログ合同会社
+ * 変更履歴：2019.09.20
  *         ：新規登録
  */
-package jp.linedesign.hoshimiru.dwr;
+package jp.livlog.hoshimiru.dwr;
 
 import java.util.Calendar;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-import jp.linedesign.hoshimiru.helper.hoshimiru.StarrySky;
-import jp.linedesign.hoshimiru.helper.hoshimiru.StarrySkyData;
-import jp.linedesign.hoshimiru.helper.hoshimiru.StarrySkyMessage;
-import jp.linedesign.hoshimiru.share.AbsBaseDwr;
-import jp.linedesign.hoshimiru.share.HoshimiruSymbol;
-import jp.linedesign.utility.CurrentDateAddition;
-import jp.linedesign.utility.Symbol;
+import jp.livlog.hoshimiru.helper.hoshimiru.StarrySky;
+import jp.livlog.hoshimiru.helper.hoshimiru.StarrySkyData;
+import jp.livlog.hoshimiru.helper.hoshimiru.StarrySkyMessage;
+import jp.livlog.hoshimiru.share.AbsBaseDwr;
+import jp.livlog.hoshimiru.share.CurrentDateAddition;
+import jp.livlog.hoshimiru.share.HoshimiruSymbol;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 星空の様子情報取得クラス.
@@ -27,10 +25,10 @@ import jp.linedesign.utility.Symbol;
  * @author H.Aoshima
  * @version 1.0
  */
+@Slf4j
 public class StatusAjax extends AbsBaseDwr {
 
-    /** Log. */
-    private static Logger log = Logger.getLogger(StatusAjax.class.getName());
+
 
 
     // private final static String JAPAN = "日本";
@@ -52,7 +50,7 @@ public class StatusAjax extends AbsBaseDwr {
             this.execBefore();
 
             // 時差を計算
-            final double gmtHour = gmtSecond / Symbol.INT_3600;
+            final double gmtHour = gmtSecond / HoshimiruSymbol.INT_3600;
 
             // 星空の様子を取得する
             final List <StarrySkyData> list = StarrySky.execute(
@@ -73,7 +71,7 @@ public class StatusAjax extends AbsBaseDwr {
             this.execAfter();
 
         } catch (final Exception e) {
-            log.log(Level.WARNING, e.toString());
+            log.error(e.getMessage(),e);
         }
 
         return data;

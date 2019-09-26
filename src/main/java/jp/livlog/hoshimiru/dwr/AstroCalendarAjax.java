@@ -1,22 +1,21 @@
 /*
- * タイトル：星みるプロジェクト.
+ * タイトル：ほしみるプロジェクト
  * 説明    ：
- * 著作権  ：Copyright(c) 2016 LineDesign
- * 会社名  ：株式会社 LineDesign
- * 変更履歴：2016.01.01
+ * 著作権  ：Copyright(c) 2019 LivLog llc.
+ * 会社名  ：リブログ合同会社
+ * 変更履歴：2019.09.20
  *         ：新規登録
  */
-package jp.linedesign.hoshimiru.dwr;
+package jp.livlog.hoshimiru.dwr;
 
 import java.util.Calendar;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-import jp.linedesign.hoshimiru.helper.hoshimiru.AstroCalendar;
-import jp.linedesign.hoshimiru.helper.hoshimiru.AstroCalendarData;
-import jp.linedesign.hoshimiru.share.AbsBaseDwr;
-import jp.linedesign.utility.CurrentDateAddition;
+import jp.livlog.hoshimiru.helper.hoshimiru.AstroCalendar;
+import jp.livlog.hoshimiru.helper.hoshimiru.AstroCalendarData;
+import jp.livlog.hoshimiru.share.AbsBaseDwr;
+import jp.livlog.hoshimiru.share.CurrentDateAddition;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 月と暦情報取得クラス.
@@ -24,10 +23,10 @@ import jp.linedesign.utility.CurrentDateAddition;
  * @author H.Aoshima
  * @version 1.0
  */
+@Slf4j
 public class AstroCalendarAjax extends AbsBaseDwr {
 
-    /** Log. */
-    private static Logger log = Logger.getLogger(TwitterAjax.class.getName());
+
 
 
     @Override
@@ -69,7 +68,7 @@ public class AstroCalendarAjax extends AbsBaseDwr {
             this.execAfter();
 
         } catch (final Exception e) {
-            log.log(Level.WARNING, e.toString());
+            log.error(e.getMessage(),e);
         }
 
         return ret;

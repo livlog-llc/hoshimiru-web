@@ -301,4 +301,7 @@ public final class HoshimiruSymbol {
     /** int:360. */
     public static final int      INT_360                         = 360;
 
+    /** int:3600. */
+    public static final int      INT_3600                         = 3600;
+
 }

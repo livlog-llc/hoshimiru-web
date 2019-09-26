@@ -54,7 +54,6 @@
       <groupId>org.directwebremoting</groupId>
       <artifactId>dwr</artifactId>
       <version>3.0.2-RELEASE</version>
-      <type>pom</type>
     </dependency>
     <dependency>
       <groupId>org.modelmapper</groupId>

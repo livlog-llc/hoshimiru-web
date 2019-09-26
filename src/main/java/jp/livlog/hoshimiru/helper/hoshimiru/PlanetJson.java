@@ -27,7 +27,7 @@ public class PlanetJson extends AbsJson {
     /**
      * 状態.
      */
-    private List <PlanetData> result           = new ArrayList <PlanetData>();
+    private List <PlanetData> result           = new ArrayList <>();
 
 
     /**

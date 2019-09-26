@@ -50,10 +50,89 @@ public final class GeoCoder {
 
 
     /**
-     * コンストラクタ.
+     * 文字配列を連結して返す.
+     *
+     * @param array String[]
+     * @param separator String
+     * @return String
      */
-    private GeoCoder() {
+    public static String arrayToStringLine(final String[] array, final String separator) {
 
+        final StringBuffer sb = new StringBuffer();
+
+        for (final String str : array) {
+            if (StringUtils.isBlank(str)) {
+                sb.append(str + separator);
+            }
+        }
+
+        final String value = sb.toString().trim();
+
+        return StringUtils.removeEnd(value, separator.trim());
+    }
+
+
+    /**
+     * ジオコード.
+     * @param query String
+     * @return String
+     * @throws Exception 例外
+     */
+    @SuppressWarnings ("rawtypes")
+    public static String geo(final String query) throws Exception {
+
+        String coordinates = null;
+
+        try {
+
+            // URLの生成
+            final Parameters parameters = new Parameters();
+            parameters.addParameter("query", HttpUtil.urlEncoder(query, HoshimiruSymbol.UTF_8));
+            parameters.addParameter("detail", "string");
+            parameters.addParameter("datum", "wgs");
+            parameters.addParameter("output", "json");
+            parameters.addParameter("appid", YahooapisSymbol.APP_ID);
+
+            final URL url = new URL(HttpUtil.setUrlParameter(GeoCoder.SUGGETS_URL2, parameters));
+            final HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+            GeoCoder.log.log(Level.INFO, url.toString());
+
+            // 値の取得
+            final InputStream is = connection.getInputStream();
+            final Reader r = new InputStreamReader(is, HoshimiruSymbol.UTF_8);
+            final Map resultMap = JSON.decode(r);
+
+            GeoCoder.log.log(Level.INFO, resultMap.toString());
+
+            r.close();
+            is.close();
+
+            final Map resultInfoMap = (Map) resultMap.get("ResultInfo");
+            final BigDecimal status = (BigDecimal) resultInfoMap.get("Status");
+
+            if (status.intValue() == HoshimiruSymbol.INT_200) {
+
+                final List featureList = (List) resultMap.get("Feature");
+                final Map featureMap = (Map) featureList.get(0);
+                final Map geometry = (Map) featureMap.get("Geometry");
+                coordinates = (String) geometry.get("Coordinates");
+
+            } else {
+                throw new Exception();
+            }
+
+        } catch (final ClassCastException e) {
+            throw new Exception(e);
+        } catch (final NullPointerException e) {
+            throw new Exception(e);
+        } catch (final MalformedURLException e) {
+            throw new Exception(e);
+        } catch (final Exception e) {
+            throw new Exception(e);
+        }
+
+        return coordinates;
     }
 
 
@@ -81,10 +160,10 @@ public final class GeoCoder {
             parameters.addParameter("output", "json");
             parameters.addParameter("appid", YahooapisSymbol.APP_ID);
 
-            final URL url = new URL(HttpUtil.setUrlParameter(SUGGETS_URL1, parameters));
+            final URL url = new URL(HttpUtil.setUrlParameter(GeoCoder.SUGGETS_URL1, parameters));
             final HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
-            log.log(Level.INFO, url.toString());
+            GeoCoder.log.log(Level.INFO, url.toString());
 
             // 値の取得
             final InputStream is = connection.getInputStream();
@@ -98,7 +177,7 @@ public final class GeoCoder {
             final Map featureMap = (Map) featureList.get(0);
             final Map propertyMap = (Map) featureMap.get("Property");
 
-            log.log(Level.INFO, propertyMap.toString());
+            GeoCoder.log.log(Level.INFO, propertyMap.toString());
 
             final Map countryMap = (Map) propertyMap.get("Country");
             dto.setCountry((String) countryMap.get("Name"));
@@ -165,7 +244,7 @@ public final class GeoCoder {
                 dto.setState((String) stateMap.get("Name"));
             }
 
-            dto.setFullAddress(arrayToStringLine(new String[] { dto.getCountry(), dto.getState(), dto.getCity(), dto.getAddress() },
+            dto.setFullAddress(GeoCoder.arrayToStringLine(new String[] { dto.getCountry(), dto.getState(), dto.getCity(), dto.getAddress() },
                     HoshimiruSymbol.COMMA_AND_SPACE));
 
         } catch (final ClassCastException e) {
@@ -183,87 +262,9 @@ public final class GeoCoder {
 
 
     /**
-     * ジオコード.
-     * @param query String
-     * @return String
-     * @throws Exception 例外
+     * コンストラクタ.
      */
-    @SuppressWarnings ("rawtypes")
-    public static String geo(final String query) throws Exception {
+    private GeoCoder() {
 
-        String coordinates = null;
-
-        try {
-
-            // URLの生成
-            final Parameters parameters = new Parameters();
-            parameters.addParameter("query", HttpUtil.urlEncoder(query, HoshimiruSymbol.UTF_8));
-            parameters.addParameter("detail", "string");
-            parameters.addParameter("datum", "wgs");
-            parameters.addParameter("output", "json");
-            parameters.addParameter("appid", YahooapisSymbol.APP_ID);
-
-            final URL url = new URL(HttpUtil.setUrlParameter(SUGGETS_URL2, parameters));
-            final HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-
-            log.log(Level.INFO, url.toString());
-
-            // 値の取得
-            final InputStream is = connection.getInputStream();
-            final Reader r = new InputStreamReader(is, HoshimiruSymbol.UTF_8);
-            final Map resultMap = JSON.decode(r);
-
-            log.log(Level.INFO, resultMap.toString());
-
-            r.close();
-            is.close();
-
-            final Map resultInfoMap = (Map) resultMap.get("ResultInfo");
-            final BigDecimal status = (BigDecimal) resultInfoMap.get("Status");
-
-            if (status.intValue() == HoshimiruSymbol.INT_200) {
-
-                final List featureList = (List) resultMap.get("Feature");
-                final Map featureMap = (Map) featureList.get(0);
-                final Map geometry = (Map) featureMap.get("Geometry");
-                coordinates = (String) geometry.get("Coordinates");
-
-            } else {
-                throw new Exception();
-            }
-
-        } catch (final ClassCastException e) {
-            throw new Exception(e);
-        } catch (final NullPointerException e) {
-            throw new Exception(e);
-        } catch (final MalformedURLException e) {
-            throw new Exception(e);
-        } catch (final Exception e) {
-            throw new Exception(e);
-        }
-
-        return coordinates;
-    }
-
-    /**
-     * 文字配列を連結して返す.
-     *
-     * @param array String[]
-     * @param separator String
-     * @return String
-     */
-    public static String arrayToStringLine(final String[] array, final String separator) {
-
-        final StringBuffer sb = new StringBuffer();
-
-        for (final String str : array) {
-            if (StringUtils.isBlank(str)) {
-                sb.append(str + separator);
-            }
-        }
-
-        final String value = sb.toString().trim();
-
-        return StringUtils.removeEnd(value, separator.trim());
     }
 }

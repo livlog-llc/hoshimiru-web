@@ -26,16 +26,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class AstroCalendarAjax extends AbsBaseDwr {
 
-
-
-
-    @Override
-    protected void setClazz() {
-
-        this.clazz = AstroCalendarAjax.class;
-    }
-
-
     /**
      * 月と暦情報を取得する.
      * @param gmtSecond int
@@ -54,7 +44,7 @@ public class AstroCalendarAjax extends AbsBaseDwr {
 
             final Calendar cal = CurrentDateAddition.addSecond((gmtSecond));
 
-            List <AstroCalendarData> astroCalendarList = AstroCalendar.execute(cal.getTime());
+            final List <AstroCalendarData> astroCalendarList = AstroCalendar.execute(cal.getTime());
 
             final StringBuffer sb = new StringBuffer();
             if (astroCalendarList.size() > 0 && astroCalendarList.get(0) != null) {
@@ -68,9 +58,16 @@ public class AstroCalendarAjax extends AbsBaseDwr {
             this.execAfter();
 
         } catch (final Exception e) {
-            log.error(e.getMessage(),e);
+            AstroCalendarAjax.log.error(e.getMessage(), e);
         }
 
         return ret;
+    }
+
+
+    @Override
+    protected void setClazz() {
+
+        this.clazz = AstroCalendarAjax.class;
     }
 }

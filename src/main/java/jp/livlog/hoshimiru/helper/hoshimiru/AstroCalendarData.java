@@ -41,21 +41,14 @@ public class AstroCalendarData implements Serializable, Cloneable {
     private String            detail           = "";
 
 
-    /**
-     * @return date
+    /*
+     * (非 Javadoc)
+     * @see java.lang.Object#clone()
      */
-    public String getDate() {
+    @Override
+    public final Object clone() throws CloneNotSupportedException {
 
-        return this.date;
-    }
-
-
-    /**
-     * @param pDate セットする date
-     */
-    public void setDate(final String pDate) {
-
-        this.date = pDate;
+        return super.clone();
     }
 
 
@@ -69,11 +62,11 @@ public class AstroCalendarData implements Serializable, Cloneable {
 
 
     /**
-     * @param pContent セットする content
+     * @return date
      */
-    public void setContent(final String pContent) {
+    public String getDate() {
 
-        this.content = pContent;
+        return this.date;
     }
 
 
@@ -83,6 +76,24 @@ public class AstroCalendarData implements Serializable, Cloneable {
     public String getDetail() {
 
         return this.detail;
+    }
+
+
+    /**
+     * @param pContent セットする content
+     */
+    public void setContent(final String pContent) {
+
+        this.content = pContent;
+    }
+
+
+    /**
+     * @param pDate セットする date
+     */
+    public void setDate(final String pDate) {
+
+        this.date = pDate;
     }
 
 
@@ -103,16 +114,5 @@ public class AstroCalendarData implements Serializable, Cloneable {
     public String toString() {
 
         return ReflectionToStringBuilder.toString(this);
-    }
-
-
-    /*
-     * (非 Javadoc)
-     * @see java.lang.Object#clone()
-     */
-    @Override
-    public final Object clone() throws CloneNotSupportedException {
-
-        return super.clone();
     }
 }

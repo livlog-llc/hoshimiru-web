@@ -19,80 +19,6 @@ import java.util.Calendar;
 public final class CurrentDateAddition {
 
     /**
-     * コンストラクタ.
-     */
-    private CurrentDateAddition() {
-
-    }
-
-
-    /**
-     * 現在の日付・時刻から指定の【年数】を加算・減算した結果を返します.
-     * @param addYera 加算・減算する年数
-     * @return    計算後の Calendar インスタンス.
-     */
-    public static Calendar addYera(final int addYera) {
-
-        return add(null, addYera, 0, 0, 0, 0, 0, 0);
-    }
-
-
-    /**
-     * 現在の日付・時刻から指定の【月数】を加算・減算した結果を返します.
-     * @param addMonth 加算・減算する月数
-     * @return    計算後の Calendar インスタンス.
-     */
-    public static Calendar addMonth(final int addMonth) {
-
-        return add(null, 0, addMonth, 0, 0, 0, 0, 0);
-    }
-
-
-    /**
-     * 現在の日付・時刻から指定の【日数】を加算・減算した結果を返します.
-     * @param addDate 加算・減算する日数
-     * @return    計算後の Calendar インスタンス.
-     */
-    public static Calendar addDate(final int addDate) {
-
-        return add(null, 0, 0, addDate, 0, 0, 0, 0);
-    }
-
-
-    /**
-     * 現在の日付・時刻から指定の【時間】を加算・減算した結果を返します.
-     * @param addHour 加算・減算する時間
-     * @return    計算後の Calendar インスタンス.
-     */
-    public static Calendar addHour(final int addHour) {
-
-        return add(null, 0, 0, 0, addHour, 0, 0, 0);
-    }
-
-
-    /**
-     * 現在の日付・時刻から指定の【分】を加算・減算した結果を返します.
-     * @param addMinute 加算・減算する分
-     * @return    計算後の Calendar インスタンス.
-     */
-    public static Calendar addMinute(final int addMinute) {
-
-        return add(null, 0, 0, 0, 0, addMinute, 0, 0);
-    }
-
-
-    /**
-     * 現在の日付・時刻から指定の【秒】を加算・減算した結果を返します.
-     * @param addSecond 加算・減算する秒
-     * @return    計算後の Calendar インスタンス.
-     */
-    public static Calendar addSecond(final int addSecond) {
-
-        return add(null, 0, 0, 0, 0, 0, addSecond, 0);
-    }
-
-
-    /**
      * 現在の日付・時刻から指定の時間量を加算・減算した結果を返します.
      * 年、月、日、時間、分、秒、ミリ秒の各時間フィールドに対し、
      * 任意の時間量を設定できます.
@@ -143,6 +69,80 @@ public final class CurrentDateAddition {
         cal.add(Calendar.SECOND, addSecond);
         cal.add(Calendar.MILLISECOND, addMillisecond);
         return cal;
+    }
+
+
+    /**
+     * 現在の日付・時刻から指定の【日数】を加算・減算した結果を返します.
+     * @param addDate 加算・減算する日数
+     * @return    計算後の Calendar インスタンス.
+     */
+    public static Calendar addDate(final int addDate) {
+
+        return CurrentDateAddition.add(null, 0, 0, addDate, 0, 0, 0, 0);
+    }
+
+
+    /**
+     * 現在の日付・時刻から指定の【時間】を加算・減算した結果を返します.
+     * @param addHour 加算・減算する時間
+     * @return    計算後の Calendar インスタンス.
+     */
+    public static Calendar addHour(final int addHour) {
+
+        return CurrentDateAddition.add(null, 0, 0, 0, addHour, 0, 0, 0);
+    }
+
+
+    /**
+     * 現在の日付・時刻から指定の【分】を加算・減算した結果を返します.
+     * @param addMinute 加算・減算する分
+     * @return    計算後の Calendar インスタンス.
+     */
+    public static Calendar addMinute(final int addMinute) {
+
+        return CurrentDateAddition.add(null, 0, 0, 0, 0, addMinute, 0, 0);
+    }
+
+
+    /**
+     * 現在の日付・時刻から指定の【月数】を加算・減算した結果を返します.
+     * @param addMonth 加算・減算する月数
+     * @return    計算後の Calendar インスタンス.
+     */
+    public static Calendar addMonth(final int addMonth) {
+
+        return CurrentDateAddition.add(null, 0, addMonth, 0, 0, 0, 0, 0);
+    }
+
+
+    /**
+     * 現在の日付・時刻から指定の【秒】を加算・減算した結果を返します.
+     * @param addSecond 加算・減算する秒
+     * @return    計算後の Calendar インスタンス.
+     */
+    public static Calendar addSecond(final int addSecond) {
+
+        return CurrentDateAddition.add(null, 0, 0, 0, 0, 0, addSecond, 0);
+    }
+
+
+    /**
+     * 現在の日付・時刻から指定の【年数】を加算・減算した結果を返します.
+     * @param addYera 加算・減算する年数
+     * @return    計算後の Calendar インスタンス.
+     */
+    public static Calendar addYera(final int addYera) {
+
+        return CurrentDateAddition.add(null, addYera, 0, 0, 0, 0, 0, 0);
+    }
+
+
+    /**
+     * コンストラクタ.
+     */
+    private CurrentDateAddition() {
+
     }
 
 }

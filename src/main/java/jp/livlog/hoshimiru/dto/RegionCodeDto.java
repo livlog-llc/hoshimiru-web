@@ -17,50 +17,50 @@ import lombok.Data;
  * @version 1.0
  */
 @Data
-public class RegionCodeDto  {
+public class RegionCodeDto {
 
     /**
      * 予報地域コード.
      */
-    private String            forecastAreaCode;
+    private String forecastAreaCode;
 
     /**
      * 都道府県コード.
      */
-    private String            prefectureCode;
+    private String prefectureCode;
 
     /**
      * 都道府県代表地.
      */
-    private String            representativeFlg;
+    private String representativeFlg;
 
     /**
      * 予報都道府県名.
      */
-    private String            prefectureName;
+    private String prefectureName;
 
     /**
      * 予報地域名.
      */
-    private String            regionName;
+    private String regionName;
 
     /**
      * 代表都市名.
      */
-    private String            cityRepresentatives;
+    private String cityRepresentatives;
 
     /**
      * 緯度.
      */
-    private Double            geolat;
+    private Double geolat;
 
     /**
      * 経度.
      */
-    private Double            geolong;
+    private Double geolong;
 
     /**
      * 距離.
      */
-    private Double            distance;
+    private Double distance;
 }

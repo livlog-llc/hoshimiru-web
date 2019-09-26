@@ -21,8 +21,6 @@ import java.net.URLEncoder;
  */
 public final class HttpUtil {
 
-
-
     /** TAG_P_START. */
     public static final String TAG_P_START = "<p>";
 
@@ -34,10 +32,14 @@ public final class HttpUtil {
 
 
     /**
-     * コンストラクタ.
+     * URLに送信するパラメータを生成する.
+     *
+     * @param parameters Parameters
+     * @return String
      */
-    private HttpUtil() {
+    public static String setParameter(final Parameters parameters) {
 
+        return parameters.toString();
     }
 
 
@@ -55,14 +57,16 @@ public final class HttpUtil {
 
 
     /**
-     * URLに送信するパラメータを生成する.
+     * 文字列のURLデコードを行う.
      *
-     * @param parameters Parameters
+     * @param text String
+     * @param charsetName String
      * @return String
+     * @throws UnsupportedEncodingException 例外
      */
-    public static String setParameter(final Parameters parameters) {
+    public static String urlDecoder(final String text, final String charsetName) throws UnsupportedEncodingException {
 
-        return parameters.toString();
+        return URLDecoder.decode(text, charsetName);
     }
 
 
@@ -81,20 +85,10 @@ public final class HttpUtil {
 
 
     /**
-     * 文字列のURLデコードを行う.
-     *
-     * @param text String
-     * @param charsetName String
-     * @return String
-     * @throws UnsupportedEncodingException 例外
+     * コンストラクタ.
      */
-    public static String urlDecoder(final String text, final String charsetName) throws UnsupportedEncodingException {
+    private HttpUtil() {
 
-        return URLDecoder.decode(text, charsetName);
     }
-
-
-
-
 
 }

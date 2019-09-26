@@ -26,7 +26,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class OtherUtil {
 
-
     /**
      * String型の時間を分に変換.
      *
@@ -59,11 +58,12 @@ public class OtherUtil {
 
         } catch (final Exception e) {
             // エラーログ
-            log.error(e.getMessage(), e);
+            OtherUtil.log.error(e.getMessage(), e);
         }
 
         return nRtnMinute;
     }
+
 
     /**
      * Time型の時間をString型に変換.
@@ -87,7 +87,7 @@ public class OtherUtil {
             strTime = strTime.replace("午前", "AM").replace("午後", "PM");
         } catch (final Exception e) {
             // エラーログ
-            log.error(e.getMessage(), e);
+            OtherUtil.log.error(e.getMessage(), e);
         }
 
         return strTime;
@@ -106,7 +106,7 @@ public class OtherUtil {
         final Calendar calendar = Calendar.getInstance();
         calendar.setTime(time);
 
-        final String val =  StringUtils.leftPad(String.valueOf(calendar.get(Calendar.HOUR)),2,"0");
+        final String val = StringUtils.leftPad(String.valueOf(calendar.get(Calendar.HOUR)), 2, "0");
 
         // String val = "0" + calendar.get(Calendar.HOUR);
         // val = val.substring(val.length() - 2, val.length());
@@ -128,7 +128,7 @@ public class OtherUtil {
         final Calendar calendar = Calendar.getInstance();
         calendar.setTime(time);
 
-        final String val =  StringUtils.leftPad(String.valueOf(calendar.get(Calendar.HOUR_OF_DAY)),2,"0");
+        final String val = StringUtils.leftPad(String.valueOf(calendar.get(Calendar.HOUR_OF_DAY)), 2, "0");
 
         // String val = "0" + calendar.get(Calendar.HOUR_OF_DAY);
         // val = val.substring(val.length() - 2, val.length());
@@ -149,29 +149,9 @@ public class OtherUtil {
         final Calendar calendar = Calendar.getInstance();
         calendar.setTime(time);
 
-        final String val =  StringUtils.leftPad(String.valueOf(calendar.get(Calendar.MINUTE)),2,"0");
+        final String val = StringUtils.leftPad(String.valueOf(calendar.get(Calendar.MINUTE)), 2, "0");
 
         // String val = "0" + calendar.get(Calendar.MINUTE);
-        // val = val.substring(val.length() - 2, val.length());
-
-        return val;
-    }
-
-
-    /**
-     * 指定した日付の秒を取得する.
-     *
-     * @param time Date
-     * @return String
-     */
-    public static String getSecond(final Date time) {
-
-        final Calendar calendar = Calendar.getInstance();
-        calendar.setTime(time);
-
-        final String val =  StringUtils.leftPad(String.valueOf(calendar.get(Calendar.SECOND)),2,"0");
-
-        // String val = "0" + calendar.get(Calendar.SECOND);
         // val = val.substring(val.length() - 2, val.length());
 
         return val;
@@ -196,5 +176,25 @@ public class OtherUtil {
         } else {
             return "PM";
         }
+    }
+
+
+    /**
+     * 指定した日付の秒を取得する.
+     *
+     * @param time Date
+     * @return String
+     */
+    public static String getSecond(final Date time) {
+
+        final Calendar calendar = Calendar.getInstance();
+        calendar.setTime(time);
+
+        final String val = StringUtils.leftPad(String.valueOf(calendar.get(Calendar.SECOND)), 2, "0");
+
+        // String val = "0" + calendar.get(Calendar.SECOND);
+        // val = val.substring(val.length() - 2, val.length());
+
+        return val;
     }
 }

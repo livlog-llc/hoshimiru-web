@@ -51,21 +51,14 @@ public class MeteorStreamData implements Serializable, Cloneable {
     private String            message          = "";
 
 
-    /**
-     * @return name
+    /*
+     * (非 Javadoc)
+     * @see java.lang.Object#clone()
      */
-    public String getName() {
+    @Override
+    public final Object clone() throws CloneNotSupportedException {
 
-        return this.name;
-    }
-
-
-    /**
-     * @param pName セットする name
-     */
-    public void setName(final String pName) {
-
-        this.name = pName;
+        return super.clone();
     }
 
 
@@ -79,47 +72,11 @@ public class MeteorStreamData implements Serializable, Cloneable {
 
 
     /**
-     * @param pFromDate セットする fromDate
-     */
-    public void setFromDate(final String pFromDate) {
-
-        this.fromDate = pFromDate;
-    }
-
-
-    /**
-     * @return toDate
-     */
-    public String getToDate() {
-
-        return this.toDate;
-    }
-
-
-    /**
-     * @param pToDate セットする toDate
-     */
-    public void setToDate(final String pToDate) {
-
-        this.toDate = pToDate;
-    }
-
-
-    /**
      * @return maxDate
      */
     public String getMaxDate() {
 
         return this.maxDate;
-    }
-
-
-    /**
-     * @param pMaxDate セットする maxDate
-     */
-    public void setMaxDate(final String pMaxDate) {
-
-        this.maxDate = pMaxDate;
     }
 
 
@@ -133,11 +90,65 @@ public class MeteorStreamData implements Serializable, Cloneable {
 
 
     /**
+     * @return name
+     */
+    public String getName() {
+
+        return this.name;
+    }
+
+
+    /**
+     * @return toDate
+     */
+    public String getToDate() {
+
+        return this.toDate;
+    }
+
+
+    /**
+     * @param pFromDate セットする fromDate
+     */
+    public void setFromDate(final String pFromDate) {
+
+        this.fromDate = pFromDate;
+    }
+
+
+    /**
+     * @param pMaxDate セットする maxDate
+     */
+    public void setMaxDate(final String pMaxDate) {
+
+        this.maxDate = pMaxDate;
+    }
+
+
+    /**
      * @param pMessage セットする message
      */
     public void setMessage(final String pMessage) {
 
         this.message = pMessage;
+    }
+
+
+    /**
+     * @param pName セットする name
+     */
+    public void setName(final String pName) {
+
+        this.name = pName;
+    }
+
+
+    /**
+     * @param pToDate セットする toDate
+     */
+    public void setToDate(final String pToDate) {
+
+        this.toDate = pToDate;
     }
 
 
@@ -149,16 +160,5 @@ public class MeteorStreamData implements Serializable, Cloneable {
     public String toString() {
 
         return ReflectionToStringBuilder.toString(this);
-    }
-
-
-    /*
-     * (非 Javadoc)
-     * @see java.lang.Object#clone()
-     */
-    @Override
-    public final Object clone() throws CloneNotSupportedException {
-
-        return super.clone();
     }
 }

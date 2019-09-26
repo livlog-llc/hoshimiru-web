@@ -38,6 +38,42 @@ public enum NotificationType {
      */
     INFORMATION("info", "情報", "Information");
 
+    /**
+     * @return String[]
+     */
+    public static String[] getCode() {
+
+        final NotificationType[] types = NotificationType.values();
+        final String[] codes = new String[types.length];
+        for (int i = 0; i < codes.length; i++) {
+            codes[i] = types[i].cd;
+        }
+        return codes;
+    }
+
+
+    /**
+     * @param cd String
+     * @param lang String
+     * @return String
+     */
+    public static String getName(final String cd, final String lang) {
+
+        final NotificationType[] types = NotificationType.values();
+        for (final NotificationType type : types) {
+            if (Locale.ENGLISH.getLanguage().equals(lang)) {
+                if ((type.cd).equals(cd)) {
+                    return type.en;
+                }
+            } else {
+                if ((type.cd).equals(cd)) {
+                    return type.ja;
+                }
+            }
+        }
+        return null;
+    }
+
     /** コード. */
     public String cd;
 
@@ -60,44 +96,5 @@ public enum NotificationType {
         this.ja = pJa;
         this.en = pEn;
     }
-
-
-    /**
-     * @return String[]
-     */
-    public static String[] getCode() {
-
-        final NotificationType[] types = values();
-        final String[] codes = new String[types.length];
-        for (int i = 0; i < codes.length; i++) {
-            codes[i] = types[i].cd;
-        }
-        return codes;
-    }
-
-
-    /**
-     * @param cd String
-     * @param lang String
-     * @return String
-     */
-    public static String getName(final String cd, final String lang) {
-
-        final NotificationType[] types = values();
-        for (final NotificationType type : types) {
-            if (Locale.ENGLISH.getLanguage().equals(lang)) {
-                if ((type.cd).equals(cd)) {
-                    return type.en;
-                }
-            } else {
-                if ((type.cd).equals(cd)) {
-                    return type.ja;
-                }
-            }
-        }
-        return null;
-    }
-
-
 
 }

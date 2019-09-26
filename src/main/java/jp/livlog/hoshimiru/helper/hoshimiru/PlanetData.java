@@ -101,183 +101,14 @@ public class PlanetData implements Serializable, Cloneable {
     private String            url              = "";
 
 
-    /**
-     * @return id
+    /*
+     * (非 Javadoc)
+     * @see java.lang.Object#clone()
      */
-    public String getId() {
+    @Override
+    public final Object clone() throws CloneNotSupportedException {
 
-        return this.id;
-    }
-
-
-    /**
-     * @param pId セットする id
-     */
-    public void setId(final String pId) {
-
-        this.id = pId;
-    }
-
-
-    /**
-     * @return jpName
-     */
-    public String getJpName() {
-
-        return this.jpName;
-    }
-
-
-    /**
-     * @param pJpName セットする jpName
-     */
-    public void setJpName(final String pJpName) {
-
-        this.jpName = pJpName;
-    }
-
-
-    /**
-     * @return enName
-     */
-    public String getEnName() {
-
-        return this.enName;
-    }
-
-
-    /**
-     * @param pEnName セットする enName
-     */
-    public void setEnName(final String pEnName) {
-
-        this.enName = pEnName;
-    }
-
-
-    /**
-     * @return content
-     */
-    public String getContent() {
-
-        return this.content;
-    }
-
-
-    /**
-     * @param pContent セットする content
-     */
-    public void setContent(final String pContent) {
-
-        this.content = pContent;
-    }
-
-
-    /**
-     * @return origin
-     */
-    public String getOrigin() {
-
-        return this.origin;
-    }
-
-
-    /**
-     * @param pOrigin セットする origin
-     */
-    public void setOrigin(final String pOrigin) {
-
-        this.origin = pOrigin;
-    }
-
-
-    /**
-     * @return eclipticalFlag
-     */
-    public String getEclipticalFlag() {
-
-        return this.eclipticalFlag;
-    }
-
-
-    /**
-     * @param pEclipticalFlag セットする eclipticalFlag
-     */
-    public void setEclipticalFlag(final String pEclipticalFlag) {
-
-        this.eclipticalFlag = pEclipticalFlag;
-    }
-
-
-    /**
-     * @return ptolemyFlag
-     */
-    public String getPtolemyFlag() {
-
-        return this.ptolemyFlag;
-    }
-
-
-    /**
-     * @param pPtolemyFlag セットする ptolemyFlag
-     */
-    public void setPtolemyFlag(final String pPtolemyFlag) {
-
-        this.ptolemyFlag = pPtolemyFlag;
-    }
-
-
-    /**
-     * @return confirmed
-     */
-    public String getConfirmed() {
-
-        return this.confirmed;
-    }
-
-
-    /**
-     * @param pConfirmed セットする confirmed
-     */
-    public void setConfirmed(final String pConfirmed) {
-
-        this.confirmed = pConfirmed;
-    }
-
-
-    /**
-     * @return drowing
-     */
-    public String getDrowing() {
-
-        return this.drowing;
-    }
-
-
-    /**
-     * @param pDrowing セットする drowing
-     */
-    public void setDrowing(final String pDrowing) {
-
-        this.drowing = pDrowing;
-    }
-
-
-    /**
-     * @return direction
-     */
-    public String getDirection() {
-
-        return this.direction;
-    }
-
-
-    /**
-     * @param pDirection セットする direction
-     */
-    public void setDirection(final String pDirection) {
-
-        this.direction = pDirection;
+        return super.clone();
     }
 
 
@@ -291,11 +122,110 @@ public class PlanetData implements Serializable, Cloneable {
 
 
     /**
-     * @param pAltitude セットする altitude
+     * @return confirmed
      */
-    public void setAltitude(final String pAltitude) {
+    public String getConfirmed() {
 
-        this.altitude = pAltitude;
+        return this.confirmed;
+    }
+
+
+    /**
+     * @return content
+     */
+    public String getContent() {
+
+        return this.content;
+    }
+
+
+    /**
+     * @return direction
+     */
+    public String getDirection() {
+
+        return this.direction;
+    }
+
+
+    /**
+     * @return drowing
+     */
+    public String getDrowing() {
+
+        return this.drowing;
+    }
+
+
+    /**
+     * @return eclipticalFlag
+     */
+    public String getEclipticalFlag() {
+
+        return this.eclipticalFlag;
+    }
+
+
+    /**
+     * @return enName
+     */
+    public String getEnName() {
+
+        return this.enName;
+    }
+
+
+    /**
+     * @return id
+     */
+    public String getId() {
+
+        return this.id;
+    }
+
+
+    /**
+     * @return jpName
+     */
+    public String getJpName() {
+
+        return this.jpName;
+    }
+
+
+    /**
+     * @return msg
+     */
+    public String getMsg() {
+
+        return this.msg;
+    }
+
+
+    /**
+     * @return origin
+     */
+    public String getOrigin() {
+
+        return this.origin;
+    }
+
+
+    /**
+     * @return ptolemyFlag
+     */
+    public String getPtolemyFlag() {
+
+        return this.ptolemyFlag;
+    }
+
+
+    /**
+     * @return roughly
+     */
+    public String getRoughly() {
+
+        return this.roughly;
     }
 
 
@@ -309,38 +239,92 @@ public class PlanetData implements Serializable, Cloneable {
 
 
     /**
-     * @param pStarImage セットする starImage
+     * @return url
      */
-    public void setStarImage(final String pStarImage) {
+    public String getUrl() {
 
-        this.starImage = pStarImage;
+        return this.url;
     }
 
 
     /**
-     * @return roughly
+     * @param pAltitude セットする altitude
      */
-    public String getRoughly() {
+    public void setAltitude(final String pAltitude) {
 
-        return roughly;
+        this.altitude = pAltitude;
     }
 
 
     /**
-     * @param pRoughly セットする roughly
+     * @param pConfirmed セットする confirmed
      */
-    public void setRoughly(final String pRoughly) {
+    public void setConfirmed(final String pConfirmed) {
 
-        this.roughly = pRoughly;
+        this.confirmed = pConfirmed;
     }
 
 
     /**
-     * @return msg
+     * @param pContent セットする content
      */
-    public String getMsg() {
+    public void setContent(final String pContent) {
 
-        return msg;
+        this.content = pContent;
+    }
+
+
+    /**
+     * @param pDirection セットする direction
+     */
+    public void setDirection(final String pDirection) {
+
+        this.direction = pDirection;
+    }
+
+
+    /**
+     * @param pDrowing セットする drowing
+     */
+    public void setDrowing(final String pDrowing) {
+
+        this.drowing = pDrowing;
+    }
+
+
+    /**
+     * @param pEclipticalFlag セットする eclipticalFlag
+     */
+    public void setEclipticalFlag(final String pEclipticalFlag) {
+
+        this.eclipticalFlag = pEclipticalFlag;
+    }
+
+
+    /**
+     * @param pEnName セットする enName
+     */
+    public void setEnName(final String pEnName) {
+
+        this.enName = pEnName;
+    }
+
+
+    /**
+     * @param pId セットする id
+     */
+    public void setId(final String pId) {
+
+        this.id = pId;
+    }
+
+
+    /**
+     * @param pJpName セットする jpName
+     */
+    public void setJpName(final String pJpName) {
+
+        this.jpName = pJpName;
     }
 
 
@@ -354,11 +338,38 @@ public class PlanetData implements Serializable, Cloneable {
 
 
     /**
-     * @return url
+     * @param pOrigin セットする origin
      */
-    public String getUrl() {
+    public void setOrigin(final String pOrigin) {
 
-        return this.url;
+        this.origin = pOrigin;
+    }
+
+
+    /**
+     * @param pPtolemyFlag セットする ptolemyFlag
+     */
+    public void setPtolemyFlag(final String pPtolemyFlag) {
+
+        this.ptolemyFlag = pPtolemyFlag;
+    }
+
+
+    /**
+     * @param pRoughly セットする roughly
+     */
+    public void setRoughly(final String pRoughly) {
+
+        this.roughly = pRoughly;
+    }
+
+
+    /**
+     * @param pStarImage セットする starImage
+     */
+    public void setStarImage(final String pStarImage) {
+
+        this.starImage = pStarImage;
     }
 
 
@@ -379,16 +390,5 @@ public class PlanetData implements Serializable, Cloneable {
     public String toString() {
 
         return ReflectionToStringBuilder.toString(this);
-    }
-
-
-    /*
-     * (非 Javadoc)
-     * @see java.lang.Object#clone()
-     */
-    @Override
-    public final Object clone() throws CloneNotSupportedException {
-
-        return super.clone();
     }
 }

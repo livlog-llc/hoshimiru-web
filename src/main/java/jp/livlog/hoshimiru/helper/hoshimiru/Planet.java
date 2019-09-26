@@ -46,14 +46,6 @@ public final class Planet {
 
 
     /**
-     * コンストラクタ.
-     */
-    private Planet() {
-
-    }
-
-
-    /**
      * 実行処理.
      * @param pDatetime Date
      * @param gmt String
@@ -94,11 +86,11 @@ public final class Planet {
             parameters.addParameter("gmt", gmt);
         }
 
-        final URL url = new URL(HttpUtil.setUrlParameter(SUGGETS_URL1, parameters));
+        final URL url = new URL(HttpUtil.setUrlParameter(Planet.SUGGETS_URL1, parameters));
         final HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setReadTimeout(0);
 
-        log.log(Level.INFO, url.toString());
+        Planet.log.log(Level.INFO, url.toString());
 
         // 値の取得
         final InputStream is = connection.getInputStream();
@@ -109,11 +101,19 @@ public final class Planet {
         r.close();
         is.close();
 
-        if (ERROR == dto.getStatus()) {
+        if (Planet.ERROR == dto.getStatus()) {
             throw new Exception();
         }
 
         return dto.getResult();
+    }
+
+
+    /**
+     * コンストラクタ.
+     */
+    private Planet() {
+
     }
 
 }

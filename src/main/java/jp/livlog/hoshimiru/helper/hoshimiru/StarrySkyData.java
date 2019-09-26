@@ -51,57 +51,14 @@ public class StarrySkyData implements Serializable, Cloneable {
     private String            message          = "";
 
 
-    /**
-     * @return sunriseHm
+    /*
+     * (非 Javadoc)
+     * @see java.lang.Object#clone()
      */
-    public String getSunriseHm() {
+    @Override
+    public final Object clone() throws CloneNotSupportedException {
 
-        return this.sunriseHm;
-    }
-
-
-    /**
-     * @param pSunriseHm セットする sunriseHm
-     */
-    public void setSunriseHm(final String pSunriseHm) {
-
-        this.sunriseHm = pSunriseHm;
-    }
-
-
-    /**
-     * @return sunsetHm
-     */
-    public String getSunsetHm() {
-
-        return this.sunsetHm;
-    }
-
-
-    /**
-     * @param pSunsetHm セットする sunsetHm
-     */
-    public void setSunsetHm(final String pSunsetHm) {
-
-        this.sunsetHm = pSunsetHm;
-    }
-
-
-    /**
-     * @return date
-     */
-    public String getDate() {
-
-        return this.date;
-    }
-
-
-    /**
-     * @param pDate セットする date
-     */
-    public void setDate(final String pDate) {
-
-        this.date = pDate;
+        return super.clone();
     }
 
 
@@ -115,11 +72,11 @@ public class StarrySkyData implements Serializable, Cloneable {
 
 
     /**
-     * @param pCloudcover セットする cloudcover
+     * @return date
      */
-    public void setCloudcover(final String pCloudcover) {
+    public String getDate() {
 
-        this.cloudcover = pCloudcover;
+        return this.date;
     }
 
 
@@ -133,11 +90,65 @@ public class StarrySkyData implements Serializable, Cloneable {
 
 
     /**
+     * @return sunriseHm
+     */
+    public String getSunriseHm() {
+
+        return this.sunriseHm;
+    }
+
+
+    /**
+     * @return sunsetHm
+     */
+    public String getSunsetHm() {
+
+        return this.sunsetHm;
+    }
+
+
+    /**
+     * @param pCloudcover セットする cloudcover
+     */
+    public void setCloudcover(final String pCloudcover) {
+
+        this.cloudcover = pCloudcover;
+    }
+
+
+    /**
+     * @param pDate セットする date
+     */
+    public void setDate(final String pDate) {
+
+        this.date = pDate;
+    }
+
+
+    /**
     * @param pMessage セットする message
     */
     public void setMessage(final String pMessage) {
 
         this.message = pMessage;
+    }
+
+
+    /**
+     * @param pSunriseHm セットする sunriseHm
+     */
+    public void setSunriseHm(final String pSunriseHm) {
+
+        this.sunriseHm = pSunriseHm;
+    }
+
+
+    /**
+     * @param pSunsetHm セットする sunsetHm
+     */
+    public void setSunsetHm(final String pSunsetHm) {
+
+        this.sunsetHm = pSunsetHm;
     }
 
 
@@ -149,16 +160,5 @@ public class StarrySkyData implements Serializable, Cloneable {
     public String toString() {
 
         return ReflectionToStringBuilder.toString(this);
-    }
-
-
-    /*
-     * (非 Javadoc)
-     * @see java.lang.Object#clone()
-     */
-    @Override
-    public final Object clone() throws CloneNotSupportedException {
-
-        return super.clone();
     }
 }

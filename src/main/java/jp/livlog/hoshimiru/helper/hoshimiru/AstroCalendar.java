@@ -46,14 +46,6 @@ public final class AstroCalendar {
 
 
     /**
-     * コンストラクタ.
-     */
-    private AstroCalendar() {
-
-    }
-
-
-    /**
      * 実行処理.
      * @param pDatetime Date
      * @return List <AstroCalendarData>
@@ -71,11 +63,11 @@ public final class AstroCalendar {
         final Parameters parameters = new Parameters();
 
         parameters.addParameter("date", OtherUtil.convertToString(datetime, "yyyy-MM-dd"));
-        final URL url = new URL(HttpUtil.setUrlParameter(SUGGETS_URL1, parameters));
+        final URL url = new URL(HttpUtil.setUrlParameter(AstroCalendar.SUGGETS_URL1, parameters));
         final HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setReadTimeout(0);
 
-        log.log(Level.INFO, url.toString());
+        AstroCalendar.log.log(Level.INFO, url.toString());
 
         // 値の取得
         final InputStream is = connection.getInputStream();
@@ -86,10 +78,18 @@ public final class AstroCalendar {
         r.close();
         is.close();
 
-        if (ERROR == dto.getStatus()) {
+        if (AstroCalendar.ERROR == dto.getStatus()) {
             throw new Exception();
         }
 
         return dto.getResult();
+    }
+
+
+    /**
+     * コンストラクタ.
+     */
+    private AstroCalendar() {
+
     }
 }

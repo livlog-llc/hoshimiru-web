@@ -17,81 +17,77 @@ import lombok.Data;
  * @version 1.0
  */
 @Data
-public class MapData  {
-
-
+public class MapData {
 
     /**
      * 記号.
      */
-    private String            sign;
+    private String sign;
 
     /**
      * ID.
      */
-    private String            id;
+    private String id;
 
     /**
      * 名前.
      */
-    private String            name;
+    private String name;
 
     /**
      * 電話.
      */
-    private String            phone;
+    private String phone;
 
     /**
      * 郵便番号.
      */
-    private String            zip;
+    private String zip;
 
     /**
      * 国.
      */
-    private String            country;
+    private String country;
 
     /**
      * 県.
      */
-    private String            state;
+    private String state;
 
     /**
      * 市.
      */
-    private String            city;
+    private String city;
 
     /**
      * 住所.
      */
-    private String            address;
+    private String address;
 
     /**
      * 1行であらわす住所.
      */
-    private String            fullAddress;
+    private String fullAddress;
 
     /**
      * 緯度.
      */
-    private Double            geolat;
+    private Double geolat;
 
     /**
      * 経度.
      */
-    private Double            geolong;
+    private Double geolong;
 
     /**
      * API種類.
      */
-    private String            acquisition;
+    private String acquisition;
 
     /**
      * その他.
      */
-    private String            etc;
-
-
+    private String etc;
 
 
     /**

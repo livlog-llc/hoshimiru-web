@@ -28,9 +28,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class StatusAjax extends AbsBaseDwr {
 
-
-
-
     // private final static String JAPAN = "日本";
 
     /**
@@ -71,7 +68,7 @@ public class StatusAjax extends AbsBaseDwr {
             this.execAfter();
 
         } catch (final Exception e) {
-            log.error(e.getMessage(),e);
+            StatusAjax.log.error(e.getMessage(), e);
         }
 
         return data;

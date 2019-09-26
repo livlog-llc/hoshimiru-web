@@ -22,13 +22,6 @@ import jp.livlog.hoshimiru.share.OtherUtil;
  */
 public final class StarrySkyMessage {
 
-    /**
-     * コンストラクタ.
-     */
-    private StarrySkyMessage() {
-
-    }
-
     /***************************** 返却メッセージ **:::**********************************
      * 以下の定義は画面で使用するメッセージのキー値になります.
      *********************************************************************************/
@@ -137,6 +130,14 @@ public final class StarrySkyMessage {
         } else {
             return StarrySkyMessage.S0000;
         }
+    }
+
+
+    /**
+     * コンストラクタ.
+     */
+    private StarrySkyMessage() {
+
     }
 
 }

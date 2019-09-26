@@ -27,7 +27,7 @@ public class ConstellationJson extends AbsJson {
     /**
      * 状態.
      */
-    private List <ConstellationData> result           = new ArrayList <ConstellationData>();
+    private List <ConstellationData> result           = new ArrayList <>();
 
 
     /**

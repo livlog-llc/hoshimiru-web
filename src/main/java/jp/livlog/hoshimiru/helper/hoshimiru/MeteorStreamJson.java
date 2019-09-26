@@ -27,7 +27,7 @@ public class MeteorStreamJson extends AbsJson {
     /**
      * 状態.
      */
-    private List <MeteorStreamData> result           = new ArrayList <MeteorStreamData>();
+    private List <MeteorStreamData> result           = new ArrayList <>();
 
 
     /**

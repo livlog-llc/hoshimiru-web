@@ -27,7 +27,7 @@ public class StarrySkyJson extends AbsJson {
     /**
      * 状態.
      */
-    private List <StarrySkyData> result           = new ArrayList <StarrySkyData>();
+    private List <StarrySkyData> result           = new ArrayList <>();
 
 
     /**

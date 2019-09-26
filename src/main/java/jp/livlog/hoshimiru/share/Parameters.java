@@ -21,42 +21,6 @@ import java.util.List;
 public class Parameters implements Serializable {
 
     /**
-     * シリアルバージョンUID.
-     */
-    private static final long serialVersionUID = 1L;
-
-    /** parameters. */
-    private List <Parameter>  parameters       = new ArrayList <>();
-
-
-    /**
-     * @param name String
-     * @param value String
-     */
-    public final void addParameter(final String name, final String value) {
-
-        this.parameters.add(new Parameter(name, value));
-    }
-
-
-    /**
-     * @return parameterList
-     */
-    public final List <Parameter> getParameters() {
-
-        return this.parameters;
-    }
-
-
-    /**
-     * @param pParameters セットする parameters
-     */
-    public final void setParameters(final List <Parameter> pParameters) {
-
-        this.parameters = pParameters;
-    }
-
-    /**
      * パラメータを保持する.
      *
      * @author H.Aoshima
@@ -98,20 +62,20 @@ public class Parameters implements Serializable {
 
 
         /**
-         * @param pName セットする name
-         */
-        public void setName(final String pName) {
-
-            this.name = pName;
-        }
-
-
-        /**
          * @return value
          */
         public String getValue() {
 
             return this.value;
+        }
+
+
+        /**
+         * @param pName セットする name
+         */
+        public void setName(final String pName) {
+
+            this.name = pName;
         }
 
 
@@ -123,6 +87,42 @@ public class Parameters implements Serializable {
             this.value = pValue;
         }
 
+    }
+
+    /**
+     * シリアルバージョンUID.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /** parameters. */
+    private List <Parameter>  parameters       = new ArrayList <>();
+
+
+    /**
+     * @param name String
+     * @param value String
+     */
+    public final void addParameter(final String name, final String value) {
+
+        this.parameters.add(new Parameter(name, value));
+    }
+
+
+    /**
+     * @return parameterList
+     */
+    public final List <Parameter> getParameters() {
+
+        return this.parameters;
+    }
+
+
+    /**
+     * @param pParameters セットする parameters
+     */
+    public final void setParameters(final List <Parameter> pParameters) {
+
+        this.parameters = pParameters;
     }
 
 

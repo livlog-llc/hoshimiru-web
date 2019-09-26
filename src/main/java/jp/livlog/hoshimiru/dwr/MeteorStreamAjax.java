@@ -26,16 +26,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class MeteorStreamAjax extends AbsBaseDwr {
 
-
-
-
-    @Override
-    protected void setClazz() {
-
-        this.clazz = MeteorStreamAjax.class;
-    }
-
-
     /**
      * 流星群情報を取得する.
      * @param gmtSecond int
@@ -76,9 +66,16 @@ public class MeteorStreamAjax extends AbsBaseDwr {
             this.execAfter();
 
         } catch (final Exception e) {
-            log.error(e.getMessage(),e);
+            MeteorStreamAjax.log.error(e.getMessage(), e);
         }
 
         return ret;
+    }
+
+
+    @Override
+    protected void setClazz() {
+
+        this.clazz = MeteorStreamAjax.class;
     }
 }

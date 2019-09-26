@@ -30,11 +30,10 @@ import jp.livlog.hoshimiru.dto.RegionCodeDtoKey0Comparator;
 public final class RegionCodeList {
 
     /**  */
-    private static List <RegionCodeDto>               regionCodeList = new ArrayList <RegionCodeDto>();
+    private static List <RegionCodeDto>               regionCodeList = new ArrayList <>();
 
     /**  */
-    private static Map <String, List <RegionCodeDto>> regionCodeMap  = new HashMap <String, List <RegionCodeDto>>();
-
+    private static Map <String, List <RegionCodeDto>> regionCodeMap  = new HashMap <>();
 
     static {
 
@@ -43,7 +42,7 @@ public final class RegionCodeList {
         final Enumeration <String> enu = regionCode.getKeys();
 
         // キーの並び替え
-        final Set <String> keySet = new TreeSet <String>();
+        final Set <String> keySet = new TreeSet <>();
         while (enu.hasMoreElements()) {
             final String text = enu.nextElement();
             keySet.add(text);
@@ -61,32 +60,24 @@ public final class RegionCodeList {
             dto.setCityRepresentatives(array[HoshimiruSymbol.INT_4]);
             dto.setGeolat(Double.valueOf(array[HoshimiruSymbol.INT_5]));
             dto.setGeolong(Double.valueOf(array[HoshimiruSymbol.INT_6]));
-            regionCodeList.add(dto);
+            RegionCodeList.regionCodeList.add(dto);
         }
 
-        Collections.sort(regionCodeList, new RegionCodeDtoKey0Comparator());
+        Collections.sort(RegionCodeList.regionCodeList, new RegionCodeDtoKey0Comparator());
 
         String state = "";
         List <RegionCodeDto> tempGroupList = null;
-        for (final RegionCodeDto dto : regionCodeList) {
+        for (final RegionCodeDto dto : RegionCodeList.regionCodeList) {
             if (state.equals(dto.getPrefectureName())) {
                 tempGroupList.add(dto);
-                regionCodeMap.put(dto.getPrefectureName(), tempGroupList);
+                RegionCodeList.regionCodeMap.put(dto.getPrefectureName(), tempGroupList);
             } else {
                 state = dto.getPrefectureName();
-                tempGroupList = new ArrayList <RegionCodeDto>();
+                tempGroupList = new ArrayList <>();
                 tempGroupList.add(dto);
-                regionCodeMap.put(dto.getPrefectureName(), tempGroupList);
+                RegionCodeList.regionCodeMap.put(dto.getPrefectureName(), tempGroupList);
             }
         }
-    }
-
-
-    /**
-     * コンストラクタ.
-     */
-    private RegionCodeList() {
-
     }
 
 
@@ -95,7 +86,7 @@ public final class RegionCodeList {
      */
     public static List <RegionCodeDto> getRegionCodeList() {
 
-        return regionCodeList;
+        return RegionCodeList.regionCodeList;
     }
 
 
@@ -104,7 +95,15 @@ public final class RegionCodeList {
      */
     public static Map <String, List <RegionCodeDto>> getRegionCodeMap() {
 
-        return regionCodeMap;
+        return RegionCodeList.regionCodeMap;
+    }
+
+
+    /**
+     * コンストラクタ.
+     */
+    private RegionCodeList() {
+
     }
 
 }

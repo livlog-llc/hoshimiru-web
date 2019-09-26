@@ -27,7 +27,7 @@ public class AstroCalendarJson extends AbsJson {
     /**
      * 状態.
      */
-    private List <AstroCalendarData> result           = new ArrayList <AstroCalendarData>();
+    private List <AstroCalendarData> result           = new ArrayList <>();
 
 
     /**

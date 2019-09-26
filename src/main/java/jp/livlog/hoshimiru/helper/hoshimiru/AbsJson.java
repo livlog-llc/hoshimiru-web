@@ -31,6 +31,17 @@ public abstract class AbsJson implements Serializable, Cloneable {
     private int               status           = 0;
 
 
+    /*
+     * (非 Javadoc)
+     * @see java.lang.Object#clone()
+     */
+    @Override
+    public final Object clone() throws CloneNotSupportedException {
+
+        return super.clone();
+    }
+
+
     /**
      * @return status
      */
@@ -57,16 +68,5 @@ public abstract class AbsJson implements Serializable, Cloneable {
     public String toString() {
 
         return ReflectionToStringBuilder.toString(this);
-    }
-
-
-    /*
-     * (非 Javadoc)
-     * @see java.lang.Object#clone()
-     */
-    @Override
-    public final Object clone() throws CloneNotSupportedException {
-
-        return super.clone();
     }
 }

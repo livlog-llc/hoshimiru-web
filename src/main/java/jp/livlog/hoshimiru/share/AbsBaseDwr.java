@@ -34,9 +34,17 @@ public abstract class AbsBaseDwr {
 
 
     /**
-     * 自クラスを設定.
+     * 後処理.
+     *
+     * @throws Exception 例外
      */
-    protected abstract void setClazz();
+    @SuppressWarnings ("deprecation")
+    protected void execAfter() throws Exception {
+
+        this.msec = new Date().getTime() - this.msec;
+
+        AbsBaseDwr.log.log(Level.INFO, "処理時間:" + new Time(this.msec).getSeconds() + "(秒), 機能:" + this.clazz.getName());
+    }
 
 
     /**
@@ -52,16 +60,8 @@ public abstract class AbsBaseDwr {
 
 
     /**
-     * 後処理.
-     *
-     * @throws Exception 例外
+     * 自クラスを設定.
      */
-    @SuppressWarnings ("deprecation")
-    protected void execAfter() throws Exception {
-
-        this.msec = new Date().getTime() - this.msec;
-
-        log.log(Level.INFO, "処理時間:" + new Time(this.msec).getSeconds() + "(秒), 機能:" + this.clazz.getName());
-    }
+    protected abstract void setClazz();
 
 }

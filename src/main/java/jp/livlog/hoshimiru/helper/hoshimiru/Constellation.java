@@ -47,14 +47,6 @@ public final class Constellation {
 
 
     /**
-     * コンストラクタ.
-     */
-    private Constellation() {
-
-    }
-
-
-    /**
      * 実行処理.
      * @param pDatetime Date
      * @param gmt String
@@ -95,11 +87,11 @@ public final class Constellation {
             parameters.addParameter("gmt", gmt);
         }
 
-        final URL url = new URL(HttpUtil.setUrlParameter(SUGGETS_URL1, parameters));
+        final URL url = new URL(HttpUtil.setUrlParameter(Constellation.SUGGETS_URL1, parameters));
         final HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setReadTimeout(0);
 
-        log.log(Level.INFO, url.toString());
+        Constellation.log.log(Level.INFO, url.toString());
 
         // 値の取得
         final InputStream is = connection.getInputStream();
@@ -110,11 +102,19 @@ public final class Constellation {
         r.close();
         is.close();
 
-        if (ERROR == dto.getStatus()) {
+        if (Constellation.ERROR == dto.getStatus()) {
             throw new Exception();
         }
 
         return dto.getResult();
+    }
+
+
+    /**
+     * コンストラクタ.
+     */
+    private Constellation() {
+
     }
 
 }

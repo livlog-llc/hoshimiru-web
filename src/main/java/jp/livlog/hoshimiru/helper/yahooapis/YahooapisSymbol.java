@@ -17,18 +17,11 @@ package jp.livlog.hoshimiru.helper.yahooapis;
 public final class YahooapisSymbol {
 
     /**
-     * コンストラクタ.
-     */
-    private YahooapisSymbol() {
-
-    }
-
-    /***************************** 文字列定数定義 ************************************/
-
-    /**
      * アプリケーションID.
      */
     public static final String   APP_ID     = "dj0zaiZpPXB3VjBhWnBTQ3JrYiZzPWNvbnN1bWVyc2VjcmV0Jng9YWQ-";
+
+    /***************************** 文字列定数定義 ************************************/
 
     /**
      * シークレット.
@@ -57,5 +50,13 @@ public final class YahooapisSymbol {
      * 文字列:0.
      */
     public static final String   STR_ZERO   = "0";
+
+
+    /**
+     * コンストラクタ.
+     */
+    private YahooapisSymbol() {
+
+    }
 
 }

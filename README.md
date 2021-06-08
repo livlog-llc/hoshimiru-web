@@ -1,7 +1,7 @@
 # 星をみるひと
 星をみるひとのWebサイト
 
-http://hoshi-miru.com/
+https://hoshi-miru.com/
 
 ## 【見えるの？】
 - 星空の様子
